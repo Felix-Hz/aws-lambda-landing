@@ -1,15 +1,14 @@
-# FastAPI Landing Page with AWS (EC2, Lambda, S3) Integration
+# FastAPI AWS Medieval Fair Gallery
 
-This project showcases a landing page developed using FastAPI in Python. The landing page allows users to upload images, and the project integrates with AWS EC2 and Lambda to display the names and details of the newly uploaded images from an S3 bucket.
+This project is a medieval fair gallery created using FastAPI and AWS CDK. The gallery showcases images from an S3 bucket, giving it a medieval fair theme.
 
-## Prerequisites
-
-Python (version 3.6 or higher)
-AWS account with EC2, S3, and Lambda access
-AWS CLI and configured credentials
-## Setup and Deployment
-
+# Prerequisites
+- Python (version 3.6 or higher)
+- AWS account with CDK, S3, and IAM access
+- AWS CLI and configured credentials
+# Setup and Deployment
 1. Clone the repository.
+
 2. Install Python dependencies:
 
 `pip install -r requirements.txt`
@@ -18,14 +17,18 @@ AWS CLI and configured credentials
 
 `aws configure`
 
-4. Create an EC2 instance in your AWS account.
+4. Install AWS CDK:
 
-5. SSH into the EC2 instance and clone the repository.
-6. Configure the EC2 instance with necessary dependencies.
-7. Set up an S3 bucket and Lambda function.
-8. Update the FastAPI application's configuration file with AWS credentials and bucket details.
-9. Start the FastAPI application:
+`npm install -g aws-cdk`
 
-`uvicorn main:app --host 0.0.0.0 --port 8000`
+5. Deploy the AWS CDK stack:
 
-10. Access the landing page using the EC2 instance's public IP address or DNS name.
+`cdk deploy`
+
+6. After deployment, the CDK will provide an output with the API endpoint URL.
+
+7. Access the medieval fair gallery using the provided URL.
+
+Enjoy the medieval fair experience with the amazing images from the S3 bucket!
+
+_Note:_ Make sure to clean up the resources after use to avoid unnecessary costs. Run cdk destroy to delete the CDK stack and associated resources.
