@@ -1,0 +1,139 @@
+* {
+    font-family: 'MedievalSharp', cursive;
+}
+
+/* ##################################
+
+                 MAIN
+
+################################## */
+
+.title-container {
+    background-color: black;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.title-landing {
+    font-size: 55px;
+    color: red;
+    margin: 0;
+}
+
+.subtitle-landing {
+    font-size: 20px;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ##################################
+
+                 FORM
+
+################################## */
+
+.form-container {
+    max-width: 515px;
+    text-align: center;
+    padding: 0 350px;
+}
+
+.form-upload {
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.upload-message {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.upload-message.success {
+    background-color: green;
+    color: white;
+}
+
+.upload-message.error {
+    background-color: red;
+    color: white;
+}
+
+
+/* ##################################
+
+                GALLERY
+
+################################## */
+
+
+.gallery-container {
+    max-width: 900px;
+    padding: 0 200px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+
+}
+
+.gallery-item {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    /* above image with the z-index */
+    z-index: 1;
+}
+
+.delete-icon:hover {
+    color: darkred;
+}
+
+.gallery-item h3 {
+    margin-top: 0;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+/* ##################################
+
+                 DELETING
+
+################################## */
+
+
+.delete-message {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.delete-message.success {
+    background-color: green;
+    color: white;
+}
+
+.delete-message.error {
+    background-color: red;
+    color: white;
+}

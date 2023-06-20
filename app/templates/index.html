@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FastAPI & AWS</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title-container">
+        <h1 class="title-landing">Welcome to the Medieval AWS</h1>
+    </div>
+    <h2 class="subtitle-landing">Please upload elements to my AWS Bucket, and they'll be revealed in this medieval
+        gallery.</h2>
+
+    <div class="form-container">
+        <form action="/upload" method="post" enctype="multipart/form-data" class="form-upload">
+            <input type="file" name="image">
+            <input type="submit" value="Upload">
+        </form>
+
+        {% if message %}
+        <div class="upload-message {% if success %}success{% else %}error{% endif %}">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="gallery-container">
+        <h2>Elements in my S3</h2>
+        <div class="gallery">
+            {% for obj in objects %}
+            <div class="gallery-item">
+                <a href="#" class="delete-icon" onclick="deleteItem('{{ obj.Key }}')">x</a>
+                <h3>{{ obj.Key }}</h3>
+                <img src="{{ obj.ImageUrl }}" alt="Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function deleteItem(key) {
+                if (confirm("Are you sure you want to delete this photo from the S3 Bucket?")) {
+                    fetch(`/delete/${key}`, {
+                        method: 'DELETE'
+                    })
+                        .then(response => response.text())
+                        .then(data => {
+                            const parser = new DOMParser();
+                            const html = parser.parseFromString(data, 'text/html');
+
+                            const galleryContainer = document.querySelector('.gallery-container');
+                            galleryContainer.innerHTML = html.querySelector('.gallery-container').innerHTML;
+
+                            const messageElement = document.createElement('div');
+                            messageElement.innerText = "Object deleted successfully";
+                            messageElement.classList.add('delete-message');
+                            messageElement.classList.add('success');
+
+                            const formContainer = document.querySelector('.form-container');
+                            formContainer.appendChild(messageElement);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            const messageElement = document.createElement('div');
+                            messageElement.innerText = "Error deleting object";
+                            messageElement.classList.add('delete-message');
+                            messageElement.classList.add('error');
+
+                            const formContainer = document.querySelector('.form-container');
+                            formContainer.appendChild(messageElement);
+                        });
+                }
+            }
+
+            const galleryContainer = document.querySelector('.gallery-container');
+            galleryContainer.addEventListener('click', function (event) {
+                if (event.target.classList.contains('delete-icon')) {
+                    event.preventDefault();
+                    const key = event.target.parentNode.querySelector('h3').textContent;
+                    deleteItem(key);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
