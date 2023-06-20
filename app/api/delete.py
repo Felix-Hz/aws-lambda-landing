@@ -1,10 +1,15 @@
-from config import S3_BUCKET_NAME, S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION
+# from config import S3_BUCKET_NAME, S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION
 from app.api.content_grabber import get_objects_from_bucket
 from fastapi.templating import Jinja2Templates
 from fastapi import APIRouter, Request
 import botocore.exceptions
 import boto3
 import os
+
+S3_ACCESS_KEY = os.environ.get("S3_ACCESS_KEY")
+S3_SECRET_KEY = os.environ.get("S3_SECRET_KEY")
+S3_REGION = os.environ.get("S3_REGION")
+S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
 
 router = APIRouter()
 
