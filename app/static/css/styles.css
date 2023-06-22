@@ -50,16 +50,22 @@
 .upload-message {
     font-weight: bold;
     padding: 10px;
+    border-radius: 8px;
+    margin: 12px;
 }
 
 .upload-message.success {
     background-color: green;
     color: white;
+    border-radius: 8px;
+    margin: 12px;
 }
 
 .upload-message.error {
     background-color: red;
     color: white;
+    border-radius: 8px;
+    margin: 12px;
 }
 
 
@@ -126,14 +132,20 @@
 .delete-message {
     font-weight: bold;
     padding: 10px;
+    border-radius: 8px;
+    margin: 12px;
 }
 
 .delete-message.success {
     background-color: green;
     color: white;
+    border-radius: 8px;
+    margin: 12px;
 }
 
 .delete-message.error {
     background-color: red;
     color: white;
+    border-radius: 8px;
+    margin: 12px;
 }

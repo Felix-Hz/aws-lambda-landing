@@ -1,4 +1,4 @@
-# from config import S3_BUCKET_NAME, S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION
+from config import S3_BUCKET_NAME, S3_ACCESS_KEY, S3_SECRET_KEY, S3_REGION
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -6,10 +6,10 @@ from boto3 import client
 import os
 
 
-S3_ACCESS_KEY = os.environ.get("S3_ACCESS_KEY")
-S3_SECRET_KEY = os.environ.get("S3_SECRET_KEY")
-S3_REGION = os.environ.get("S3_REGION")
-S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
+# S3_ACCESS_KEY = os.environ.get("S3_ACCESS_KEY")
+# S3_SECRET_KEY = os.environ.get("S3_SECRET_KEY")
+# S3_REGION = os.environ.get("S3_REGION")
+# S3_BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
 
 s3_client = client(
     "s3",
